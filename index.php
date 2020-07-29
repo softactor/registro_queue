@@ -1,99 +1,93 @@
-<?php session_start(); 
-include 'connection/connect.php';
-include 'function/login_process.php';
-?>
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Registro Queue | Log in</title>
-        <link rel="shortcut icon" type="image/x-icon" href="images/icon/port.png" />
-        <!-- Tell the browser to be responsive to screen width -->
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="../../favicon.ico">
+
+        <title>Registro Queue</title>
+
         <!-- Bootstrap 3.3.7 -->
         <link rel="stylesheet" href="vendor/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="vendor/bower_components/font-awesome/css/font-awesome.min.css">
-        <!-- Ionicons -->
-        <link rel="stylesheet" href="vendor/bower_components/Ionicons/css/ionicons.min.css">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="vendor/dist/css/AdminLTE.min.css">
-        <!-- iCheck -->
-        <link rel="stylesheet" href="vendor/plugins/iCheck/square/blue.css">
-        <link rel="stylesheet" href="css/style.css">
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!-- Custom styles for this template -->
+        <link href="css/offcanvas.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-
-        <!-- Google Font -->
-        <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
     </head>
-    <body class="hold-transition login-page">
-        <div class="login-box">
-            <div class="login-logo login-logo-overwrite">
-                <a href="index.php"><b>Registro Queue</b></a>
-            </div>
-            <!-- /.login-logo -->
-            <div class="login-box-body">
-                <form action="" method="post">
-                    <div class="form-group has-feedback">
-                        <input type="email" name="email" class="form-control" placeholder="Email">
-                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                        <?php if (isset($_SESSION['error_message']['email_empty']) && !empty($_SESSION['error_message']['email_empty'])) { ?>
-                                <div class="alert alert-warning">
-                                    <strong>Warning!</strong> <?php echo $_SESSION['error_message']['email_empty']; ?>
-                                </div>
-                                <?php
-                                unset($_SESSION['error_message']['email_empty']);
-                            }
-                            ?>
-                            <?php if (isset($_SESSION['error_message']['email_valid']) && !empty($_SESSION['error_message']['email_valid'])) { ?>
-                                <div class="alert alert-warning">
-                                    <strong>Warning!</strong> <?php echo $_SESSION['error_message']['email_valid']; ?>
-                                </div>
-                                <?php
-                                unset($_SESSION['error_message']['email_valid']);
-                            }
-                            ?>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <input type="password" name="password" class="form-control" placeholder="Password">
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                        <?php if (isset($_SESSION['error_message']['password_empty']) && !empty($_SESSION['error_message']['password_empty'])) { ?>
-                            <div class="alert alert-warning">
-                                <strong>Warning!</strong> <?php echo $_SESSION['error_message']['password_empty']; ?>
-                            </div>
-                            <?php
-                            unset($_SESSION['error_message']['password_empty']);
-                        }
-                        ?>
-                    </div>
-                    <input type="submit" name="login_submit" class="btn btn-primary btn-block btn-flat" value="Login">
-                </form>                
-            </div>
-            <!-- /.login-box-body -->
-        </div>
-        <!-- /.login-box -->
 
+    <body>
+        <nav class="navbar navbar-fixed-top navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Project name</a>
+                </div>
+            </div><!-- /.container -->
+        </nav><!-- /.navbar -->
+
+        <div class="container">
+
+            <div class="row row-offcanvas row-offcanvas-right">
+
+                <div class="col-xs-12 col-sm-9">
+                    <p class="pull-right visible-xs">
+                        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+                    </p>
+                    <div class="jumbotron">
+                        <h1>Event Header Image!</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-lg-4">
+                            <h2>Heading</h2>
+                            <form action="/action_page.php">
+                                <div class="form-group">
+                                    <label for="email">Email address:</label>
+                                    <input type="email" class="form-control" id="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwd">Password:</label>
+                                    <input type="password" class="form-control" id="pwd">
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox"> Remember me</label>
+                                </div>
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </form>
+                        </div><!--/.col-xs-6.col-lg-4-->
+                    </div><!--/row-->
+                </div><!--/.col-xs-12.col-sm-9-->
+            </div><!--/row-->
+
+            <hr>
+
+            <footer>
+                <p>&copy; 2016 Company, Inc.</p>
+            </footer>
+
+        </div><!--/.container-->
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
         <!-- jQuery 3 -->
         <script src="vendor/bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="vendor/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!-- iCheck -->
-        <script src="vendor/plugins/iCheck/icheck.min.js"></script>
-        <script>
-            $(function () {
-                $('input').iCheck({
-                    checkboxClass: 'icheckbox_square-blue',
-                    radioClass: 'iradio_square-blue',
-                    increaseArea: '20%' /* optional */
-                });
-            });
-        </script>
+        <script src="js/offcanvas.js"></script>
     </body>
 </html>

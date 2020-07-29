@@ -2,5 +2,5 @@
  unset($_SESSION['error']);
  unset($_SESSION['success']);
  unset($_SESSION['logged']);
- header("location: ../index.php");
+ header("location: ../admin/index.php");
  exit();
