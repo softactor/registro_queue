@@ -56,13 +56,13 @@
                             <form action="/action_page.php">
                                 <div class="form-group">
                                     <label for="email">Name:</label>
-                                    <input type="email" class="form-control" id="email">
+                                    <input type="text" class="form-control" id="name" name="name">
                                 </div>
                                 <div class="form-group">
                                     <label for="pwd">Mobile:</label>
-                                    <input type="password" class="form-control" id="pwd">
+                                    <input type="text" class="form-control" id="mobile" name="mobile">
                                 </div>
-                                <button type="submit" class="btn btn-default">Register</button>
+                                <button type="submit" class="btn btn-primary btn-block">Register</button>
                             </form>
                         </div><!--/.col-xs-6.col-lg-4-->
                     </div><!--/row-->

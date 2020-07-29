@@ -333,3 +333,7 @@ function getUserNameByUserId($id){
     }
     return $name;
 }
+
+function validate_mobile($mobile){
+    return preg_match('/^[0-9]{10}+$/', $mobile);
+}
