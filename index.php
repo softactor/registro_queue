@@ -55,17 +55,14 @@
                             <h2>Heading</h2>
                             <form action="/action_page.php">
                                 <div class="form-group">
-                                    <label for="email">Email address:</label>
+                                    <label for="email">Name:</label>
                                     <input type="email" class="form-control" id="email">
                                 </div>
                                 <div class="form-group">
-                                    <label for="pwd">Password:</label>
+                                    <label for="pwd">Mobile:</label>
                                     <input type="password" class="form-control" id="pwd">
                                 </div>
-                                <div class="checkbox">
-                                    <label><input type="checkbox"> Remember me</label>
-                                </div>
-                                <button type="submit" class="btn btn-default">Submit</button>
+                                <button type="submit" class="btn btn-default">Register</button>
                             </form>
                         </div><!--/.col-xs-6.col-lg-4-->
                     </div><!--/row-->
@@ -75,7 +72,7 @@
             <hr>
 
             <footer>
-                <p>&copy; 2016 Company, Inc.</p>
+                <p>Footer Notes.</p>
             </footer>
 
         </div><!--/.container-->
