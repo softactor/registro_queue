@@ -346,9 +346,12 @@ function validate_text_input($data) {
 }
 
 function get_regis_queue_number($mobile){
+    global $conn;
     $table              =   "regis_info WHERE is_delete!=1";
-    $totalRow           =   getDataRowByTable($table);
-    $nextRow            =   $totalRow+1;    
+    $sql = "SELECT MAX(queue_number+1) AS queue_number FROM $table";
+    $result = $conn->query($sql);
+    $number  = $result->fetch_object();
+    $nextRow            =   $number->queue_number;    
     $formater_length    =   4;
     $queue_number       = sprintf('%0' . $formater_length . 'd', $nextRow);
     
