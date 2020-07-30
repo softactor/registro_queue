@@ -37,6 +37,7 @@ if (isset($_POST['registration_submit']) && !empty($_POST['registration_submit']
             $regData['queue_number']    = get_regis_queue_number($mobile);
             $regData['generated_at']    = date("Y-m-d H:i:s");
             saveData('regis_info', $regData);
+            send_registration_success_sms($mobile);
             $_SESSION['success']        = "Registration was successfull";
             header("location: index.php");
             exit();
