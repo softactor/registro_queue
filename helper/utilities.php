@@ -346,7 +346,7 @@ function validate_text_input($data) {
 }
 
 function get_regis_queue_number($mobile){
-    $table              =   "regis_info WHERE is_status!=1 AND is_delete!=1";
+    $table              =   "regis_info WHERE is_delete!=1";
     $totalRow           =   getDataRowByTable($table);
     $nextRow            =   $totalRow+1;    
     $formater_length    =   4;
