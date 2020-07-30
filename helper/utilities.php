@@ -380,6 +380,11 @@ function get_sms_reminder_phone_number(){
         while ($row = $result->fetch_object()) {
             $dataContainer[] = $row;
         }
+        print '<pre>';
+        print_r(get_sms_reminder_phone_number);
+        print '</pre>';
+        exit;
+        
         if(count($dataContainer) == $limit){
             $feedback['phoneNumber']    =   $dataContainer[$limit-1]->mobile;
             $feedback['name']           =   $dataContainer[$limit-1]->name;
