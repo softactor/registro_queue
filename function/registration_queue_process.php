@@ -15,6 +15,44 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == 'updateVisitorQStatu
     $regis_info['updated_at']   =   $update_time;
     $where['id']                =   $visitor_id;
     updateData($table, $regis_info, $where);
+    if(isset($remarks) && $remarks == 'Completed'){
+        $toRemind     =   get_sms_reminder_phone_number();
+        if(isset($toRemind) && !empty($toRemind)){
+            $ordinalNumber  =   $toRemind['number_ordinal'];
+            $toPhoneNumber  =   $toRemind['phoneNumber'];
+            
+            $message  = "";
+            $message .= "Dear ".ucfirst($toRemind['name']).",";
+            $message .= chr(10) . "You are currently $ordinalNumber in queue.";
+            $message .= chr(10) . "Kindly make your way to the waiting area.";
+            $message .= chr(10) . "Thank you for waiting.";
+            $message .= chr(10);
+            $message .= chr(10) . "Brought to you by";
+            $message .= chr(10) . "Registro";
+            
+            $reminderResp   =   process_send_remider_sms($toPhoneNumber, $message);
+            $sendSMSTime    =   date("Y-m-d H:i:s");
+            if($reminderResp){
+                $update['is_remind_sms']         =   1;
+                $update['send_remind_sms_at']    =   $sendSMSTime;
+                $where['id']    =   $toRemind['id'];
+                updateData('regis_info', $update, $where);
+
+                $insert['mobile_number']    =   $toRemind['phoneNumber'];
+                $insert['sms_type']         =   2;
+                $insert['send_at']          =   $sendSMSTime;
+                $insert['sms_status']       =   1;
+                saveData('sms_send_details', $insert);
+            }else{
+                $insert['mobile_number']    =   $toRemind['phoneNumber'];
+                $insert['sms_type']         =   2;
+                $insert['send_at']          =   $sendSMSTime;
+                $insert['sms_status']       =   0;
+                saveData('sms_send_details', $insert);
+            }
+            
+        }
+    }
     $feedback   =   [
         'update_time'   => human_format_date($update_time),
         'status'        =>  'success',
@@ -22,6 +60,13 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == 'updateVisitorQStatu
     ];
     
     echo json_encode($feedback);
+}
+function process_send_remider_sms($mobile, $message){
+    $toPhoneNumber      =   $mobile;
+    $message            =   $message;
+    $is_success         =   true;
+    include 'admin/sms/Twilio/send_sms.php';
+    return $is_success;
 }
 if(isset($_GET['process_type']) && $_GET['process_type'] == 'setResendSmsQueueNumber'){
     session_start();
@@ -51,4 +96,3 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == 'setResendSmsQueueNu
     
     echo json_encode($feedback);
 }
-

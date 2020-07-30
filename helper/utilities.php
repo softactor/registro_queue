@@ -351,7 +351,7 @@ function get_regis_queue_number($mobile){
     $sql = "SELECT MAX(queue_number+1) AS queue_number FROM $table";
     $result = $conn->query($sql);
     $number  = $result->fetch_object();
-    $nextRow            =   $number->queue_number;    
+    $nextRow            =   (($number->queue_number == 0) ? 1: $number->queue_number);    
     $formater_length    =   4;
     $queue_number       = sprintf('%0' . $formater_length . 'd', $nextRow);
     
