@@ -57,7 +57,7 @@ function updateData($table, $dataParam, $where) {
     global $conn;
     $valueSets = array();
     foreach($dataParam as $key => $value) {
-        if(isset($value) && !empty($value)){
+        if((isset($value) && !empty($value)) || $value == 0){
             $valueSets[] = $key . " = '" . $value . "'";
         }
     }
