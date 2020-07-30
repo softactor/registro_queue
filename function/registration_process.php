@@ -24,6 +24,7 @@ if (isset($_POST['registration_submit']) && !empty($_POST['registration_submit']
         header("location: index.php");
         exit();
     } else {
+        $mobile     =   "+65".$mobile;
         $emailsql = "SELECT * FROM regis_info where mobile='$mobile'";
         $result = $conn->query($emailsql);
         if ($result->num_rows > 0) {

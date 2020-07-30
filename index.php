@@ -66,6 +66,7 @@ include 'function/registration_process.php';
                                 <div class="form-group">
                                     <label for="pwd">Mobile:</label>
                                     <input type="text" class="form-control" id="mobile" name="mobile" value="<?php if(isset($_POST['mobile']) && !empty($_POST['mobile'])){ echo $_POST['mobile'];} ?>">
+                                    <span class="hint_text">Please give only 8 digit of your mobile number. System will add <b>+65</b> by default</span>
                                 </div>
                                 <input type="submit" name="registration_submit" class="btn btn-primary btn-block" value="Registration">
                             </form>

@@ -14,3 +14,9 @@ and open the template in the editor.
 .json_alert_message{
     display: none;
 }
+.hint_text {
+    color: red;
+    font-style: italic;
+    display: inline-block;
+    margin-left: 1%;
+}
