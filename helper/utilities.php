@@ -354,3 +354,15 @@ function get_regis_queue_number($mobile){
     
     return $queue_number;
 }
+function get_que_resend_sms_number(){
+    $table              =   "configure_queue_number";
+    global $conn;
+    $sql = "SELECT * FROM $table";
+    $result = $conn->query($sql);
+    $number   =   '';
+    if ($result->num_rows > 0) {
+        $number  = $result->fetch_object();
+        return $number->number;
+    }
+    return $number;
+}

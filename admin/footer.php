@@ -9,6 +9,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
+
 <script src="../vendor/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="../vendor/bower_components/jquery-ui/jquery-ui.min.js"></script>
@@ -21,13 +22,6 @@
 <!-- Morris.js charts -->
 <script src="../vendor/bower_components/raphael/raphael.min.js"></script>
 <script src="../vendor/bower_components/morris.js/morris.min.js"></script>
-<!-- Sparkline -->
-<script src="../vendor/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
-<script src="../vendor/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="../vendor/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="vendor/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
 <script src="../vendor/bower_components/moment/min/moment.min.js"></script>
 <script src="../vendor/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
@@ -42,8 +36,21 @@
 <!-- AdminLTE App -->
 <script src="../vendor/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="../vendor/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../vendor/dist/js/demo.js"></script>
+<script src="../js/site_url.js"></script>
+<script type="text/javascript">
+    function set_resend_sms_queue_number(){
+        $.ajax({
+            url: baseUrl + "function/registration_queue_process.php?process_type=setResendSmsQueueNumber",
+            type: 'POST',
+            data: $("#setResendSmsQueueNumberForm").serialize(),
+            dataType: 'JSON',
+            success: function (response) {
+                $('#success_message').show();
+                $('#message').html(response.message);
+            }
+        });
+    }
+</script>
 </body>
 </html>

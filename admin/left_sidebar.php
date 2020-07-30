@@ -12,8 +12,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Message</a></li>
-            <li><a href="index.php"><i class="fa fa-circle-o"></i> Queue</a></li>
+            <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Message</a></li>
+            <li><a href="configure_queue_number.php"><i class="fa fa-circle-o"></i> Queue</a></li>
           </ul>
         </li>
         <li class="header">Links</li>
