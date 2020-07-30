@@ -376,7 +376,6 @@ function get_sms_reminder_phone_number(){
     $table              =   "regis_info WHERE is_status=0 AND is_remind_sms=0 AND is_delete!=1 ORDER BY queue_number ASC LIMIT $limit";
     global $conn;
     $sql = "SELECT * FROM $table";
-    echo $sql; exit;
     $result = $conn->query($sql);
     $dataContainer   =   [];
     $feedback        =   [];
@@ -391,11 +390,6 @@ function get_sms_reminder_phone_number(){
             $feedback['id']             = $dataContainer[$limit-1]->id;
         }        
     }
-    print '<pre>';
-    print_r($feedback);
-    print '</pre>';
-    exit;
-    
     return $feedback;
 }
 
