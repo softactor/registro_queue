@@ -9,15 +9,16 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == 'updateVisitorQStatu
     $visitor_id     =   $_POST['visitor_id'];
     $q_status       =   $_POST['q_status'];
     $remarks        =   $_POST['remarks'];
-    
+    $update_time    =   date("Y-m-d H:i:s");
     $regis_info['remarks']      =   $remarks;
     $regis_info['is_status']    =   (isset($remarks) && $remarks == 'Enable' ? 1 : 0);
-    $regis_info['updated_at']   =   date("Y-m-d H:i:s");
+    $regis_info['updated_at']   =   $update_time;
     $where['id']                =   $visitor_id;
     updateData($table, $regis_info, $where);
     $feedback   =   [
-        'status'    =>  'success',
-        'message'   =>  "Data have been successfully updated."
+        'update_time'   => human_format_date($update_time),
+        'status'        =>  'success',
+        'message'       =>  "Data have been successfully updated."
     ];
     
     echo json_encode($feedback);

@@ -55,7 +55,7 @@
 
 function visitor_event_exit_status(visitor_id){
     var q_status    =   $('#visitor_event_exit_status_'+visitor_id).prop('checked');
-    var remarkTitle       =   (q_status ? 'Enable' : 'Disable');
+    var remarkTitle       =   (q_status ? 'Completed' : 'Pending');
     $.ajax({
         url: baseUrl + "function/registration_queue_process.php?process_type=updateVisitorQStatus",
         type: 'POST',
@@ -64,6 +64,11 @@ function visitor_event_exit_status(visitor_id){
         success: function (response) {
                 $('#success_message').show();
                 $('#message').html(response.message);
+                if(remarkTitle ==  "Completed"){
+                    $("#visitor_completed_on_date_"+visitor_id).html(response.update_time);
+                }else{
+                    $("#visitor_completed_on_date_"+visitor_id).html("");
+                }
         }
     });
 }
