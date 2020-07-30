@@ -11,3 +11,6 @@ and open the template in the editor.
 .login-logo-overwrite{
     font-size: 21px !important;
 }
+.json_alert_message{
+    display: none;
+}

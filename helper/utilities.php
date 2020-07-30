@@ -337,3 +337,20 @@ function getUserNameByUserId($id){
 function validate_mobile($mobile){
     return preg_match('/^[0-9]{10}+$/', $mobile);
 }
+
+function validate_text_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+function get_regis_queue_number($mobile){
+    $table              =   "regis_info WHERE is_status!=1";
+    $totalRow           =   getDataRowByTable($table);
+    $nextRow            =   $totalRow+1;    
+    $formater_length    =   4;
+    $queue_number       = sprintf('%0' . $formater_length . 'd', $nextRow);
+    
+    return $queue_number;
+}

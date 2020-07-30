@@ -1,0 +1,65 @@
+<?php include 'header.php'; ?>
+<?php include 'top_sidebar.php'; ?>
+<!-- Left side column. contains the logo and sidebar -->
+<?php include 'left_sidebar.php'; ?>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-md-12">
+                <?php include '../operation_message.php'; ?>                
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h2>Registration Queue List</h2>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <?php
+                        $regisData = get_registration_queue_data();
+                        if (isset($regisData) && !empty($regisData)) {
+                            ?>
+                            <div class="table-responsive">          
+                                <table class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Queue Number</th>
+                                            <th>Name</th>
+                                            <th>Mobile</th>
+                                            <th>Registered On</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        foreach ($regisData as $regis) {
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $regis->queue_number; ?></td>
+                                                <td><?php echo $regis->name; ?></td>
+                                                <td><?php echo $regis->mobile; ?></td>
+                                                <td><?php echo human_format_date($regis->generated_at); ?></td>
+                                                <td><?php echo $regis->is_status; ?></td>
+                                                <td>Action</td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <?php } else { ?>
+                            <div class="alert alert-info">
+                                <strong>Info!</strong> No Data Found.
+                            </div>
+                        <?php } ?>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<?php include 'footer.php'; ?>

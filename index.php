@@ -1,3 +1,9 @@
+<?php session_start(); 
+date_default_timezone_set('Asia/Singapore');
+include 'connection/connect.php';
+include 'helper/utilities.php';
+include 'function/registration_process.php';
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -17,6 +23,7 @@
         <link rel="stylesheet" href="vendor/bower_components/font-awesome/css/font-awesome.min.css">
         <!-- Custom styles for this template -->
         <link href="css/offcanvas.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -44,25 +51,23 @@
             <div class="row row-offcanvas row-offcanvas-right">
 
                 <div class="col-xs-12 col-sm-9">
-                    <p class="pull-right visible-xs">
-                        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-                    </p>
                     <div class="jumbotron">
                         <h1>Event Header Image!</h1>
                     </div>
                     <div class="row">
-                        <div class="col-xs-6 col-lg-4">
+                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
+                            <?php include 'operation_message.php'; ?>
                             <h2>Heading</h2>
-                            <form action="/action_page.php">
+                            <form action="" method="post">
                                 <div class="form-group">
                                     <label for="email">Name:</label>
-                                    <input type="text" class="form-control" id="name" name="name">
+                                    <input type="text" class="form-control" id="name" name="name" value="<?php if(isset($_POST['name']) && !empty($_POST['name'])){ echo $_POST['name'];} ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="pwd">Mobile:</label>
-                                    <input type="text" class="form-control" id="mobile" name="mobile">
+                                    <input type="text" class="form-control" id="mobile" name="mobile" value="<?php if(isset($_POST['mobile']) && !empty($_POST['mobile'])){ echo $_POST['mobile'];} ?>">
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                <input type="submit" name="registration_submit" class="btn btn-primary btn-block" value="Registration">
                             </form>
                         </div><!--/.col-xs-6.col-lg-4-->
                     </div><!--/row-->

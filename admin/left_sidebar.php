@@ -17,7 +17,7 @@
           </ul>
         </li>
         <li class="header">Links</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Registration Queue</span></a></li>
+        <li><a href="regitration_queue.php"><i class="fa fa-circle-o text-red"></i> <span>Registration Queue</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
