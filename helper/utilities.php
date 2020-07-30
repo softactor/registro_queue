@@ -390,6 +390,11 @@ function get_sms_reminder_phone_number(){
             $feedback['id']             = $dataContainer[$limit-1]->id;
         }        
     }
+    print '<pre>';
+    print_r($feedback);
+    print '</pre>';
+    exit;
+    
     return $feedback;
 }
 
