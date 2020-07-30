@@ -15,18 +15,8 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == 'updateVisitorQStatu
     $regis_info['updated_at']   =   $update_time;
     $where['id']                =   $visitor_id;
     $res    =   updateData($table, $regis_info, $where);
-    print '<pre>';
-    print_r($res);
-    print '</pre>';
-    exit;
-    
     if(isset($remarks) && $remarks == 'Completed'){
         $toRemind     =   get_sms_reminder_phone_number();
-        print '<pre>';
-        print_r($toRemind);
-        print '</pre>';
-        exit;
-        
         if(isset($toRemind) && !empty($toRemind)){
             $ordinalNumber  =   $toRemind['number_ordinal'];
             $toPhoneNumber  =   $toRemind['phoneNumber'];
@@ -74,6 +64,12 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == 'updateVisitorQStatu
 function process_send_remider_sms($mobile, $message){
     $toPhoneNumber      =   $mobile;
     $message            =   $message;
+    print '<pre>';
+    print_r($toPhoneNumber);
+    print_r($message);
+    print '</pre>';
+    exit;
+    
     $is_success         =   true;
     include 'admin/sms/Twilio/send_sms.php';
     return $is_success;
