@@ -366,3 +366,35 @@ function get_que_resend_sms_number(){
     }
     return $number;
 }
+
+function get_sms_reminder_phone_number(){
+    $limit              =   get_que_resend_sms_number();
+    $phoneNumber        =   "";
+    $table              =   "regis_info WHERE is_status=0 AND is_remind_sms=0 ORDER BY queue_number ASC LIMIT $limit";
+    global $conn;
+    $sql = "SELECT * FROM $table";
+    $result = $conn->query($sql);
+    $dataContainer   =   [];
+    $feedback        =   [];
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_object()) {
+            $dataContainer[] = $row;
+        }
+        if(count($dataContainer) == $limit){
+            $feedback['phoneNumber']    =   $dataContainer[$limit-1]->mobile;
+            $feedback['name']           =   $dataContainer[$limit-1]->name;
+            $feedback['number_ordinal'] = ordinal($limit);
+            $feedback['id']             = $dataContainer[$limit-1]->id;
+        }        
+    }
+    return $feedback;
+}
+
+function ordinal($number) {
+    $ends = array('th','st','nd','rd','th','th','th','th','th','th');
+    if ((($number % 100) >= 11) && (($number%100) <= 13)){
+        return $number. 'th';
+    }else{
+        return $number. $ends[$number % 10];
+    }
+}
