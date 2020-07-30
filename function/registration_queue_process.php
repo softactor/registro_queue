@@ -64,14 +64,14 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == 'updateVisitorQStatu
 function process_send_remider_sms($mobile, $message){
     $toPhoneNumber      =   $mobile;
     $message            =   $message;
-    print '<pre>';
-    print_r($toPhoneNumber);
-    print_r($message);
-    print '</pre>';
-    exit;
     
     $is_success         =   true;
     include 'admin/sms/Twilio/send_sms.php';
+    print '<pre>';
+    print_r($is_success);
+    print '</pre>';
+    exit;
+    
     return $is_success;
 }
 if(isset($_GET['process_type']) && $_GET['process_type'] == 'setResendSmsQueueNumber'){
