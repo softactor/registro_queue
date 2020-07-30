@@ -14,13 +14,12 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == 'updateVisitorQStatu
     $regis_info['is_status']    =   (isset($remarks) && $remarks == 'Completed' ? 1 : 0);
     $regis_info['updated_at']   =   $update_time;
     $where['id']                =   $visitor_id;
+    $res    =   updateData($table, $regis_info, $where);
     print '<pre>';
-    print_r($remarks);
-    print_r($regis_info);
+    print_r($res);
     print '</pre>';
     exit;
     
-    updateData($table, $regis_info, $where);
     if(isset($remarks) && $remarks == 'Completed'){
         $toRemind     =   get_sms_reminder_phone_number();
         print '<pre>';
