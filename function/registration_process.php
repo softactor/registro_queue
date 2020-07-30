@@ -39,7 +39,12 @@ if (isset($_POST['registration_submit']) && !empty($_POST['registration_submit']
             $regData['queue_number']    = $queueNumber;
             $regData['generated_at']    = date("Y-m-d H:i:s");
             saveData('regis_info', $regData);
-            $message    =   "Hi ".$name."<br> Registration was successfull.Your Queue number is ".$queueNumber."<br> Registro Team.";
+            $message  = "";
+            $message .= "Dear ".$name;
+            $message .= chr(10) . "Registration was successfull";
+            $message .= chr(10) . "Your Queue number is " . $queueNumber;
+            $message .= chr(10) . "Thanks";
+            $message .= chr(10) . "Brought to you by Registro";
             $smsResponse    =   send_registration_success_sms($mobile, $message);
             if($smsResponse){
                 $smsData['mobile_number']   =   $mobile;
