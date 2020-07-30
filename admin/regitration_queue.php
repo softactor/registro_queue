@@ -41,7 +41,13 @@
                                                 <td><?php echo $regis->name; ?></td>
                                                 <td><?php echo $regis->mobile; ?></td>
                                                 <td><?php echo human_format_date($regis->generated_at); ?></td>
-                                                <td><span id="visitor_completed_on_date_<?php echo $regis->id; ?>"></span></td>
+                                                <td>
+                                                    <span id="visitor_completed_on_date_<?php echo $regis->id; ?>">
+                                                        <?php
+                                                            echo (($regis->is_status == 1) ? human_format_date($regis->updated_at) : "");
+                                                        ?>
+                                                    </span>
+                                                </td>
                                                 <td>
                                                     <input class="is_barcode_toggle_class" onchange="visitor_event_exit_status('<?php echo $regis->id; ?>');" id="visitor_event_exit_status_<?php echo $regis->id ?>" type="checkbox" <?php if($regis->is_status){ echo 'checked'; } ?> data-toggle="toggle" data-on="Completed" data-off="Pending" data-onstyle="info" data-offstyle="danger">
                                                     <button type="button" class="btn btn-danger" onclick="deleteVisitor('<?php echo $regis->id; ?>');"><span class="fa fa-close">&nbsp;Del</span></button>
