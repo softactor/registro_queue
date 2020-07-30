@@ -25,7 +25,7 @@ if (isset($_POST['registration_submit']) && !empty($_POST['registration_submit']
         exit();
     } else {
         $mobile     =   "+65".$mobile;
-        $emailsql = "SELECT * FROM regis_info where mobile='$mobile'";
+        $emailsql = "SELECT * FROM regis_info where mobile='$mobile' AND is_delete!=1";
         $result = $conn->query($emailsql);
         if ($result->num_rows > 0) {
             $_SESSION['error'] = "You have already registered!";
@@ -40,7 +40,7 @@ if (isset($_POST['registration_submit']) && !empty($_POST['registration_submit']
             $regData['generated_at']    = date("Y-m-d H:i:s");
             saveData('regis_info', $regData);
             $message  = "";
-            $message .= "Dear ".$name.",";
+            $message .= "Dear ".ucfirst($name).",";
             $message .= chr(10) . "Registration is successful";
             $message .= chr(10) . "Your queue number is " . $queueNumber;
             $message .= chr(10) . "We'll send you another reminder SMS when your number is approaching";
@@ -70,7 +70,7 @@ if (isset($_POST['registration_submit']) && !empty($_POST['registration_submit']
 }
 
 function get_registration_queue_data($is_status=''){
-    $table      =   "regis_info";
+    $table      =   "regis_info where is_delete=0";
     $order      =   "ASC";
     $column     =   "generated_at";
     $data       =   getTableDataByTableName($table, $order, $column);
@@ -84,4 +84,23 @@ function send_registration_success_sms($mobile, $message){
     include 'admin/sms/Twilio/send_sms.php';
     
     return $is_success;
+}
+if(isset($_GET['process_type']) && $_GET['process_type'] == 'deleteVisitor'){
+    session_start();
+    date_default_timezone_set('Asia/Singapore');
+    include '../connection/connect.php';
+    include '../helper/utilities.php';
+    $table          =   "regis_info";
+    $visitor_id     =   $_POST['id'];
+    $update_time    =   date("Y-m-d H:i:s");
+    $regis_info['is_delete']    =   1;
+    $regis_info['updated_at']   =   $update_time;
+    $where['id']                =   $visitor_id;
+    updateData($table, $regis_info, $where);
+    $feedback   =   [
+        'status'        =>  'success',
+        'message'       =>  "Data have been successfully deleted."
+    ];
+    
+    echo json_encode($feedback);
 }

@@ -36,7 +36,7 @@
                                         <?php
                                         foreach ($regisData as $regis) {
                                             ?>
-                                            <tr>
+                                            <tr id="visitor_queue_id_<?php echo $regis->id; ?>">
                                                 <td><?php echo $regis->queue_number; ?></td>
                                                 <td><?php echo $regis->name; ?></td>
                                                 <td><?php echo $regis->mobile; ?></td>
@@ -44,6 +44,7 @@
                                                 <td><span id="visitor_completed_on_date_<?php echo $regis->id; ?>"></span></td>
                                                 <td>
                                                     <input class="is_barcode_toggle_class" onchange="visitor_event_exit_status('<?php echo $regis->id; ?>');" id="visitor_event_exit_status_<?php echo $regis->id ?>" type="checkbox" <?php if($regis->is_status){ echo 'checked'; } ?> data-toggle="toggle" data-on="Completed" data-off="Pending" data-onstyle="info" data-offstyle="danger">
+                                                    <button type="button" class="btn btn-danger" onclick="deleteVisitor('<?php echo $regis->id; ?>');"><span class="fa fa-close">&nbsp;Del</span></button>
                                                 </td>
                                             </tr>
                                         <?php } ?>

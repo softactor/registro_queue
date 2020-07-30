@@ -11,7 +11,7 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == 'updateVisitorQStatu
     $remarks        =   $_POST['remarks'];
     $update_time    =   date("Y-m-d H:i:s");
     $regis_info['remarks']      =   $remarks;
-    $regis_info['is_status']    =   (isset($remarks) && $remarks == 'Enable' ? 1 : 0);
+    $regis_info['is_status']    =   (isset($remarks) && $remarks == 'Completed' ? 1 : 0);
     $regis_info['updated_at']   =   $update_time;
     $where['id']                =   $visitor_id;
     updateData($table, $regis_info, $where);

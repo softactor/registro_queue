@@ -370,7 +370,7 @@ function get_que_resend_sms_number(){
 function get_sms_reminder_phone_number(){
     $limit              =   get_que_resend_sms_number();
     $phoneNumber        =   "";
-    $table              =   "regis_info WHERE is_status=0 AND is_remind_sms=0 ORDER BY queue_number ASC LIMIT $limit";
+    $table              =   "regis_info WHERE is_status=0 AND is_remind_sms=0 AND is_delete!=1 ORDER BY queue_number ASC LIMIT $limit";
     global $conn;
     $sql = "SELECT * FROM $table";
     $result = $conn->query($sql);

@@ -38,6 +38,7 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!-- AdminLTE for demo purposes -->
 <script src="../js/site_url.js"></script>
+<script src="../js/sweetalert.js"></script>
 <script src="../js/bootstrap-toggle.min.js"></script>
 <script type="text/javascript">
     function set_resend_sms_queue_number(){
@@ -71,6 +72,34 @@ function visitor_event_exit_status(visitor_id){
                 }
         }
     });
+}
+function deleteVisitor(id) {
+    swal({
+        title: 'Confirmed?',
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn-danger",
+        confirmButtonText: "Yes",
+        cancelButtonText: 'No',
+        closeOnConfirm: false
+    },
+            function () {
+                $.ajax({
+                    url: baseUrl + "function/registration_process.php?process_type=deleteVisitor",
+                    type: 'POST',
+                    data: 'id=' + id,
+                    dataType: 'JSON',
+                    success: function (response) {
+                        if (response.status == 'success') {
+                            $('#visitor_queue_id_' + id).hide('slow');
+                            swal("Delete complete", response.message, "success");
+                            setTimeout(function () {
+                                swal.close();
+                            }, 1000);
+                        }
+                    }
+                });
+            });
 }
 </script>
 </body>

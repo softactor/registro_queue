@@ -38,6 +38,7 @@ include '../function/registration_process.php';
   <link rel="stylesheet" href="../vendor/bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="../vendor/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="../css/sweetalert.css">
   <link rel="stylesheet" href="../css/bootstrap-toggle.min.css">
   <link rel="stylesheet" href="../css/style.css">
 
