@@ -37,8 +37,8 @@
                                         foreach ($regisData as $regis) {
                                             ?>
                                             <tr id="visitor_queue_id_<?php echo $regis->id; ?>">
-                                                <td><?php echo $regis->queue_number; ?></td>
-                                                <td><?php echo $regis->name; ?></td>
+                                                <td style="font-weight: bold; font-size: 18px;"><?php echo $regis->queue_number; ?></td>
+                                                <td><?php echo ucfirst($regis->name); ?></td>
                                                 <td><?php echo $regis->mobile; ?></td>
                                                 <td><?php echo human_format_date($regis->generated_at); ?></td>
                                                 <td>
