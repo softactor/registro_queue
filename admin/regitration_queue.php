@@ -41,7 +41,7 @@
                                                 <td><?php echo $regis->mobile; ?></td>
                                                 <td><?php echo human_format_date($regis->generated_at); ?></td>
                                                 <td>
-                                                    <input class="is_barcode_toggle_class" onchange="visitor_event_exit_status('<?php echo $regis->id; ?>');" id="visitor_event_exit_status_<?php echo $regis->id ?>" type="checkbox" <?php if($regis->is_status){ echo 'checked'; } ?> data-toggle="toggle" data-on="Enabled" data-off="Disabled" data-onstyle="info" data-offstyle="danger">
+                                                    <input class="is_barcode_toggle_class" onchange="visitor_event_exit_status('<?php echo $regis->id; ?>');" id="visitor_event_exit_status_<?php echo $regis->id ?>" type="checkbox" <?php if($regis->is_status){ echo 'checked'; } ?> data-toggle="toggle" data-on="Completed" data-off="Pending" data-onstyle="info" data-offstyle="danger">
                                                 </td>
                                             </tr>
                                         <?php } ?>
