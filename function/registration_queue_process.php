@@ -66,9 +66,9 @@ function process_send_remider_sms($mobile, $message){
     $message            =   $message;
     
     $is_success         =   true;
-    include 'admin/sms/Twilio/send_sms.php';
+    include '../admin/sms/Twilio/send_sms.php';
     print '<pre>';
-    print_r($is_success);
+    print_r('after include');
     print '</pre>';
     exit;
     
