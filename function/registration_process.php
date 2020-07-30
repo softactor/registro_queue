@@ -73,7 +73,7 @@ function send_registration_success_sms($mobile, $message){
     $toPhoneNumber      =   $mobile;
     $message            =   $message;
     $is_success         =   true;
-    include '../admin/sms/Twilio/send_sms.php';
+    include 'admin/sms/Twilio/send_sms.php';
     
     return $is_success;
 }
