@@ -39,20 +39,20 @@ if (isset($_POST['registration_submit']) && !empty($_POST['registration_submit']
             $regData['queue_number']    = $queueNumber;
             $regData['generated_at']    = date("Y-m-d H:i:s");
             saveData('regis_info', $regData);
-            $message    =   "Registration was successfull.Your Queue number is ".$queueNumber.'<br> Registro Team.';
+            $message    =   "Hi ".$name."<br> Registration was successfull.Your Queue number is ".$queueNumber."<br> Registro Team.";
             $smsResponse    =   send_registration_success_sms($mobile, $message);
             if($smsResponse){
                 $smsData['mobile_number']   =   $mobile;
                 $smsData['sms_type']        =   1;
                 $smsData['send_at']         =   date("Y-m-d H:i:s");
                 $smsData['sms_status']      =   1;
-                saveData('sms_send_details', $regData);
+                saveData('sms_send_details', $smsData);
             }else{
                 $smsData['mobile_number']   =   $mobile;
                 $smsData['sms_type']        =   1;
                 $smsData['send_at']         =   date("Y-m-d H:i:s");
                 $smsData['sms_status']      =   2;
-                saveData('sms_send_details', $regData);
+                saveData('sms_send_details', $smsData);
             }
             $_SESSION['success']        = "Registration was successfull";
             header("location: index.php");
