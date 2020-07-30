@@ -381,7 +381,7 @@ function get_sms_reminder_phone_number(){
             $dataContainer[] = $row;
         }
         print '<pre>';
-        print_r(get_sms_reminder_phone_number);
+        print_r($dataContainer);
         print '</pre>';
         exit;
         
