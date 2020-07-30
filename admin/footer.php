@@ -38,6 +38,7 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!-- AdminLTE for demo purposes -->
 <script src="../js/site_url.js"></script>
+<script src="../js/bootstrap-toggle.min.js"></script>
 <script type="text/javascript">
     function set_resend_sms_queue_number(){
         $.ajax({
@@ -51,6 +52,21 @@
             }
         });
     }
+
+function visitor_event_exit_status(visitor_id){
+    var q_status    =   $('#visitor_event_exit_status_'+visitor_id).prop('checked');
+    var remarkTitle       =   (q_status ? 'Enable' : 'Disable');
+    $.ajax({
+        url: baseUrl + "function/registration_queue_process.php?process_type=updateVisitorQStatus",
+        type: 'POST',
+        dataType: 'json',
+        data: 'visitor_id='+visitor_id+'&q_status='+q_status+'&remarks='+remarkTitle,
+        success: function (response) {
+                $('#success_message').show();
+                $('#message').html(response.message);
+        }
+    });
+}
 </script>
 </body>
 </html>

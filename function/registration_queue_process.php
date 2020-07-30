@@ -1,5 +1,27 @@
 <?php
 
+if(isset($_GET['process_type']) && $_GET['process_type'] == 'updateVisitorQStatus'){
+    session_start();
+    date_default_timezone_set('Asia/Singapore');
+    include '../connection/connect.php';
+    include '../helper/utilities.php';
+    $table          =   "regis_info";
+    $visitor_id     =   $_POST['visitor_id'];
+    $q_status       =   $_POST['q_status'];
+    $remarks        =   $_POST['remarks'];
+    
+    $regis_info['remarks']      =   $remarks;
+    $regis_info['is_status']    =   (isset($remarks) && $remarks == 'Enable' ? 1 : 0);
+    $regis_info['updated_at']   =   date("Y-m-d H:i:s");
+    $where['id']                =   $visitor_id;
+    updateData($table, $regis_info, $where);
+    $feedback   =   [
+        'status'    =>  'success',
+        'message'   =>  "Data have been successfully updated."
+    ];
+    
+    echo json_encode($feedback);
+}
 if(isset($_GET['process_type']) && $_GET['process_type'] == 'setResendSmsQueueNumber'){
     session_start();
     date_default_timezone_set('Asia/Singapore');
