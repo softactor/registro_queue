@@ -21,7 +21,7 @@
                         if (isset($regisData) && !empty($regisData)) {
                             ?>
                             <div class="table-responsive">          
-                                <table class="table table-bordered table-striped table-hover">
+                                <table class="table table-bordered table-striped table-hover" id="visitor_queue_table_data">
                                     <thead>
                                         <tr>
                                             <th>Queue Number</th>

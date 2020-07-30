@@ -13,7 +13,7 @@ include 'function/registration_process.php';
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="../../favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="images/icon/port.png" />
 
         <title>Registro Queue</title>
 

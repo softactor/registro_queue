@@ -33,6 +33,9 @@
 <script src="../vendor/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../vendor/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- DataTables -->
+<script src="../vendor/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../vendor/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../vendor/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -41,6 +44,9 @@
 <script src="../js/sweetalert.js"></script>
 <script src="../js/bootstrap-toggle.min.js"></script>
 <script type="text/javascript">
+    $( document ).ready(function() {
+        $("#visitor_queue_table_data").DataTable();
+    });
     function set_resend_sms_queue_number(){
         $.ajax({
             url: baseUrl + "function/registration_queue_process.php?process_type=setResendSmsQueueNumber",

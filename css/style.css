@@ -20,3 +20,8 @@ and open the template in the editor.
     display: inline-block;
     margin-left: 1%;
 }
+
+div.dataTables_filter input[type='search']{
+/*    width: 100% !important;
+    float: left;*/
+}
