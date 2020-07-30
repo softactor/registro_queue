@@ -17,6 +17,11 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == 'updateVisitorQStatu
     updateData($table, $regis_info, $where);
     if(isset($remarks) && $remarks == 'Completed'){
         $toRemind     =   get_sms_reminder_phone_number();
+        print '<pre>';
+        print_r($toRemind);
+        print '</pre>';
+        exit;
+        
         if(isset($toRemind) && !empty($toRemind)){
             $ordinalNumber  =   $toRemind['number_ordinal'];
             $toPhoneNumber  =   $toRemind['phoneNumber'];
